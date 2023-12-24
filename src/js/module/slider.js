@@ -9,12 +9,13 @@ export default class Slider {
     showSlides(n) {
         if (n > this.slides.length) {
             this.slideIndex = 1
-        } 
+        }
         if (n < 1) {
             this.slideIndex = this.slides.length
         }
 
         this.slides.forEach((element) => {
+            element.classList.add('animated')
             element.style.display = 'none'
         })
 
@@ -23,12 +24,20 @@ export default class Slider {
 
     plusSlides(n) {
         this.showSlides((this.slideIndex += n))
-    }  
+        this.slides[this.slideIndex - 1].classList.add('slideInDown')
+    }
 
     render() {
         this.btns.forEach((element) => {
             element.addEventListener('click', () => {
                 this.plusSlides(1)
+            })
+
+            element.parentNode.previousElementSibling.addEventListener('click', (e) => {
+                e.preventDefault()
+                this.slideIndex = 1
+                this.slides[this.slideIndex - 1].classList.add('slideInUp')
+                this.showSlides(this.slideIndex)
             })
         })
 
