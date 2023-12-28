@@ -1,9 +1,8 @@
-export default class Slider {
-    constructor(page, btns) {
-        this.page = document.querySelector(page)
-        this.slides = Array.from(this.page.children)
-        this.btns = document.querySelectorAll(btns)
-        this.slideIndex = 1
+import Slider from './slider'
+
+export default class MainSlider extends Slider {
+    constructor(btns) {
+        super(btns)
     }
 
     showSlides(n) {
@@ -57,7 +56,8 @@ export default class Slider {
 
             element.parentNode.previousElementSibling.addEventListener('click', (e) => {
                 e.preventDefault()
-                this.slideIndex = 1
+                // this.slideIndex = 1
+                this.slideIndex = 5
                 this.slides[this.slideIndex - 1].classList.add('slideInUp')
                 this.showSlides(this.slideIndex)
             })

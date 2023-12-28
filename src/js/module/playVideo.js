@@ -8,6 +8,7 @@ export default class playVideo {
     bindTriggers() {
         this.btns.forEach((element) => {
             element.addEventListener('click', () => {
+                
                 if (document.querySelector('iframe#frame')) {
                     this.overlay.style.display = 'flex'
                 } else {
