@@ -28,27 +28,29 @@ export default class MiniSlider extends Slider {
         }
     }
 
+    nextSlide() {
+        if (this.slides[1].tagName === 'BUTTON' && this.slides[2].tagName === 'BUTTON') {
+            // next
+            this.container.appendChild(this.slides[0]) // slide
+            this.container.appendChild(this.slides[1]) // btn
+            this.container.appendChild(this.slides[2]) // btn
+            this.decorizeSlides()
+        }
+        // prev
+        else if (this.slides[1].tagName === 'BUTTON') {
+            this.container.appendChild(this.slides[0]) // slide
+            this.container.appendChild(this.slides[1]) // btn
+            this.decorizeSlides()
+        } else {
+            this.container.appendChild(this.slides[0])
+            this.container.appendChild(this.slides[0])
+            this.slides = Array.from(this.container.children)
+            this.decorizeSlides()
+        }
+    }
+
     bindTriggers() {
-        this.next.addEventListener('click', () => {
-            if (this.slides[1].tagName === 'BUTTON' && this.slides[2].tagName === 'BUTTON') {
-                // next
-                this.container.appendChild(this.slides[0]) // slide   
-                this.container.appendChild(this.slides[1]) // btn
-                this.container.appendChild(this.slides[2]) // btn
-                this.decorizeSlides()
-            }
-            // prev
-            else if (this.slides[1].tagName === 'BUTTON') {
-                this.container.appendChild(this.slides[0]) // slide
-                this.container.appendChild(this.slides[1]) // btn
-                this.decorizeSlides()
-            } else {
-                this.container.appendChild(this.slides[0])
-                this.container.appendChild(this.slides[0])
-                this.slides = Array.from(this.container.children)
-                this.decorizeSlides()
-            }
-        })
+        this.next.addEventListener('click', () => this.nextSlide())
 
         this.prev.addEventListener('click', () => {
             for (let i = this.slides.length - 1; i > 0; i--) {
@@ -73,5 +75,11 @@ export default class MiniSlider extends Slider {
 
         this.bindTriggers()
         this.decorizeSlides()
+
+        if (this.autoplay) {
+            setInterval(() => {
+                this.nextSlide()
+            }, 5000);
+        }
     }
 }

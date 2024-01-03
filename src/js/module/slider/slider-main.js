@@ -56,8 +56,7 @@ export default class MainSlider extends Slider {
 
             element.parentNode.previousElementSibling.addEventListener('click', (e) => {
                 e.preventDefault()
-                // this.slideIndex = 1
-                this.slideIndex = 5
+                this.slideIndex = 1
                 this.slides[this.slideIndex - 1].classList.add('slideInUp')
                 this.showSlides(this.slideIndex)
             })
