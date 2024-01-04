@@ -23,9 +23,7 @@ export default class MainSlider extends Slider {
                     this.hanson.classList.add('slideInUp')
                 }, 1000)
             }
-        } catch (error) {
-            console.log(error)
-        }
+        } catch (error) {}
 
         this.slides.forEach((element) => {
             element.classList.add('animated')
@@ -42,13 +40,7 @@ export default class MainSlider extends Slider {
         this.slides[this.slideIndex - 1].classList.add('slideInDown')
     }
 
-    render() {
-        try {
-            this.hanson = document.querySelector('.hanson')
-        } catch (error) {
-            console.log(error)
-        }
-
+    bindTriggers() {
         this.btns.forEach((element) => {
             element.addEventListener('click', () => {
                 this.plusSlides(1)
@@ -63,5 +55,32 @@ export default class MainSlider extends Slider {
         })
 
         this.showSlides(this.slideIndex)
+
+        document.querySelectorAll('.prevmodule').forEach((element) => {
+            element.addEventListener('click', (e) => {
+                e.stopPropagation()
+                e.preventDefault()
+                this.plusSlides(-1)
+            })
+        })
+
+        document.querySelectorAll('.nextmodule').forEach((element) => {
+            element.addEventListener('click', (e) => {
+                e.stopPropagation()
+                e.preventDefault()
+                this.plusSlides(1)
+            })
+        })
+    }
+
+    render() {
+        if (this.container) {
+            try {
+                this.hanson = document.querySelector('.hanson')
+            } catch (error) {
+                console.log(error)
+            }
+            this.bindTriggers()
+        }
     }
 }

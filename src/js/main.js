@@ -6,6 +6,7 @@ import Form from './module/forms'
 
 window.addEventListener('DOMContentLoaded', () => {
     const mainSlider = new MainSlider({ container: '.page', btns: '.next' })
+    const modulePageSlider = new MainSlider({ container: '.moduleapp', btns: '.next' })
     const showUpSlider = new MiniSlider({ container: '.showup__content-slider', prev: '.showup__prev', next: '.showup__next', activeClass: 'card-active', animate: true })
     const modulesSlider = new MiniSlider({
         container: '.modules__content-slider',
@@ -20,11 +21,13 @@ window.addEventListener('DOMContentLoaded', () => {
     const difference = new Difference('.officerold', '.officernew', '.officer__card-item')
     const form = new Form('.form')
 
+
     mainSlider.render()
+    modulePageSlider.render()
     showUpSlider.init()
     modulesSlider.init()
     feedSlider.init()
     playVideo.init()
     difference.init()
-    form.init();
+    form.init()
 })
