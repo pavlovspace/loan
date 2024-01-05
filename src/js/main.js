@@ -18,6 +18,7 @@ window.addEventListener('DOMContentLoaded', () => {
     })
     const feedSlider = new MiniSlider({ container: '.feed__slider', prev: '.feed__slider .slick-prev', next: '.feed__slider .slick-next', activeClass: 'feed__item-active' })
     const playVideo = new PlayVideo('.showup .play', '.overlay')
+    const dynamicVideoPlayer = new PlayVideo('.module__video-item .play', '.overlay')
     const difference = new Difference('.officerold', '.officernew', '.officer__card-item')
     const form = new Form('.form')
 
