@@ -28,6 +28,7 @@ window.addEventListener('DOMContentLoaded', () => {
     modulesSlider.init()
     feedSlider.init()
     playVideo.init()
+    dynamicVideoPlayer.init()
     difference.init()
     form.init()
 })
