@@ -3,6 +3,8 @@ import MiniSlider from './module/slider/slider-mini'
 import PlayVideo from './module/playVideo'
 import Difference from './module/difference'
 import Form from './module/forms'
+import ShowInfo from './module/showInfo'
+import Download from './modules/download'
 
 window.addEventListener('DOMContentLoaded', () => {
     const mainSlider = new MainSlider({ container: '.page', btns: '.next' })
@@ -21,7 +23,8 @@ window.addEventListener('DOMContentLoaded', () => {
     const dynamicVideoPlayer = new PlayVideo('.module__video-item .play', '.overlay')
     const difference = new Difference('.officerold', '.officernew', '.officer__card-item')
     const form = new Form('.form')
-
+    const showInfo = new ShowInfo('.plus')
+    const download = new Download('.download')
 
     mainSlider.render()
     modulePageSlider.render()
@@ -32,4 +35,6 @@ window.addEventListener('DOMContentLoaded', () => {
     dynamicVideoPlayer.init()
     difference.init()
     form.init()
+    showInfo.init()
+    download.init()
 })
